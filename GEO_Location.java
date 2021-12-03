@@ -2,30 +2,29 @@ package api;
 
 public class GEO_Location implements GeoLocation{
 
-    private double x;
-    private double y;
-    private double z;
+    private double _x;
+    private double _y;
+    private double _z;
 
     public GEO_Location(double x,double y, double z) {
-        this.x=x;
-        this.y=y;
-        this.z=z;
-
+        this._x = x;
+        this._y = y;
+        this._z = z;
     }
 
     @Override
     public double x() {
-        return x;
+        return _x;
     }
 
     @Override
     public double y() {
-        return y;
+        return _y;
     }
 
     @Override
     public double z() {
-        return z;
+        return _z;
     }
 
     @Override
@@ -33,12 +32,12 @@ public class GEO_Location implements GeoLocation{
         return dist(g);
     }
     private double dist(GeoLocation g){
-        double dist_x=Math.pow((g.x()-x),2);
-        double dist_y=Math.pow((g.y()-y),2);
-        double dist_z=Math.pow((g.z()-z),2);
-        double dist_all=dist_x+dist_y+dist_z;
+        double dist_x = Math.pow((g.x() - _x), 2);
+        double dist_y = Math.pow((g.y() - _y), 2);
+        double dist_z = Math.pow((g.z() - _z), 2);
+        double dist_all = dist_x + dist_y + dist_z;
 
-            return Math.sqrt(dist_all);
+        return Math.sqrt(dist_all);
     }
 
 
