@@ -1,62 +1,99 @@
 package api;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class Edge implements EdgeData{
 
-    private Node _src;
-    private Node _dst;
- 
+     private NodeData _src;
+     private NodeData _dst;
+
     // have to be a positive value!
     private double _weight;
- 
     //string represent the details of Edge and the Tag of the Node
     //just look of node.getTag if this method return
     private String _info; //""+ src +"" +dest +""+ Weight +"" + node.getTag() + ""
-    
+
     private int _tag;
 
-    public Edge(Node src, Node dest, double weight) {
+    public Edge(NodeData src, NodeData dest, double weight) {
+
+        if(_weight<0)
+        {
+            throw new ArithmeticException("Weight must be Positive  value ");
+        }
         this._src = src;
-        this._dst = dst;
+        this._dst = dest;
         this._weight = weight;
         this._tag = 0;
         this._info = "";
     }
-    
+
+
+    /**
+     * The id of the source node of this edge.
+     *
+     * @return
+     */
     @Override
     public int getSrc() {
         return _src.getKey();
     }
-    
+
+    /**
+     * The id of the destination node of this edge
+     *
+     * @return
+     */
     @Override
     public int getDest() {
         return _dst.getKey();
     }
-   
+
+    /**
+     * @return the weight of this edge (positive value).
+     */
     @Override
     public double getWeight() {
         return _weight;
     }
 
+    /**
+     * Returns the remark (meta data) associated with this edge.
+     *
+     * @return
+     */
     @Override
     public String getInfo() {
         return _info;
     }
 
+    /**
+     * Allows changing the remark (meta data) associated with this edge.
+     *
+     * @param s
+     */
     @Override
     public void setInfo(String s) {
-        this.info = s;
+      this._info=s;
     }
- 
+
+    /**
+     * Temporal data (aka color: e,g, white, gray, black)
+     * which can be used be algorithms
+     *
+     * @return
+     */
     @Override
     public int getTag() {
         return _tag;
     }
 
+    /**
+     * This method allows setting the "tag" value for temporal marking an edge - common
+     * practice for marking by algorithms.
+     *
+     * @param t - the new value of the tag
+     */
     @Override
     public void setTag(int t) {
-        this._tag = t;
+        this._tag=t;
     }
 }
