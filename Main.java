@@ -23,6 +23,16 @@ public class Main {
         G.connect(4,3,3);
         G.connect(4,5,3.5);
 
+        GraphAlgo algos = new GraphAlgo();
+        algos.init(G);
+
+        //GraphAlgo newAlgo = new GraphAlgo();
+        Graph copiOfG = (Graph)algos.copy();
+
+
+
+
+
         G.printNodes();
         System.out.println();
         G.printEdeges();
@@ -38,36 +48,44 @@ public class Main {
         System.out.println("Edges number : " + G.edgeSize());
         System.out.println("Nodes  number : " + G.nodeSize());
 
-//        // delete node3
-//        NodeData re1 = G.removeNode(3);
-//        G.printNodes();
-//        System.out.println();
-//        G.printEdeges();
-//        System.out.println("Edges number : " + G.edgeSize());
-//        System.out.println("Nodes  number : " + G.nodeSize());
-//
-//        System.out.println();
-//
-//        // delete edge4_5
-//        EdgeData re2 = G.removeEdge(4,5);
-//        G.printNodes();
-//        System.out.println();
-//        G.printEdeges();
-//        System.out.println("Edges number : " + G.edgeSize());
-//        System.out.println("Nodes  number : " + G.nodeSize());
-//
-//        System.out.println();
-//
-//        Iterator<EdgeData> iter = G.edgeIter();
-//        while(iter.hasNext())
-//        {
-//            EdgeData ed = iter.next();
-//            int src = ed.getSrc();
-//            int dst = ed.getDest();
-//            double w = ed.getWeight();
-//            System.out.println(src + "---(" + w + ")--> " + dst);
-//        }
-//
+        // delete node3
+        NodeData re1 = G.removeNode(3);
+        G.printNodes();
+        System.out.println();
+        G.printEdeges();
+        System.out.println("Edges number : " + G.edgeSize());
+        System.out.println("Nodes  number : " + G.nodeSize());
+
+        System.out.println();
+
+        // delete edge4_5
+        EdgeData re2 = G.removeEdge(4,5);
+        G.printNodes();
+        System.out.println();
+        G.printEdeges();
+        System.out.println("Edges number : " + G.edgeSize());
+        System.out.println("Nodes  number : " + G.nodeSize());
+
+        System.out.println();
+
+        Iterator<EdgeData> iter = G.edgeIter();
+        while(iter.hasNext())
+        {
+            EdgeData ed = iter.next();
+            int src = ed.getSrc();
+            int dst = ed.getDest();
+            double w = ed.getWeight();
+            System.out.println(src + "---(" + w + ")--> " + dst);
+        }
+
+
+        //---------------print grapg like first lines -----------------
+        copiOfG.printNodes();
+        System.out.println();
+        copiOfG.printEdeges();
+        System.out.println("Edges number : " + copiOfG.edgeSize());
+        System.out.println("Nodes  number : " + copiOfG.nodeSize());
+
 //        //System.out.println(src + "---(" + w + ")--> " + dst);
 
 

@@ -180,7 +180,7 @@ public class Graph implements DirectedWeightedGraph {
         }
     }
 
-    public void tempRemoveEdge(int s , int d)//
+   private void tempRemoveEdge(int s , int d)//
     {
        for(int i = 0 ; i < _tempEdges.size() ; i++)
        {
