@@ -1,5 +1,7 @@
 package api;
 
+import java.util.Iterator;
+
 public class Main {
     public static void main(String[] args) {
         Graph G = new Graph();
@@ -28,24 +30,45 @@ public class Main {
         System.out.println("Nodes  number : " + G.nodeSize());
 
         System.out.println();
-
-        // delete node3
-        NodeData re1 = G.removeNode(3);
+        // remove edge 3-->1
+        G.removeEdge(3, 1);
         G.printNodes();
         System.out.println();
         G.printEdeges();
         System.out.println("Edges number : " + G.edgeSize());
         System.out.println("Nodes  number : " + G.nodeSize());
 
-        System.out.println();
-
-        // delete edge4_5
-        EdgeData re2 = G.removeEdge(4,5);
-        G.printNodes();
-        System.out.println();
-        G.printEdeges();
-        System.out.println("Edges number : " + G.edgeSize());
-        System.out.println("Nodes  number : " + G.nodeSize());
+//        // delete node3
+//        NodeData re1 = G.removeNode(3);
+//        G.printNodes();
+//        System.out.println();
+//        G.printEdeges();
+//        System.out.println("Edges number : " + G.edgeSize());
+//        System.out.println("Nodes  number : " + G.nodeSize());
+//
+//        System.out.println();
+//
+//        // delete edge4_5
+//        EdgeData re2 = G.removeEdge(4,5);
+//        G.printNodes();
+//        System.out.println();
+//        G.printEdeges();
+//        System.out.println("Edges number : " + G.edgeSize());
+//        System.out.println("Nodes  number : " + G.nodeSize());
+//
+//        System.out.println();
+//
+//        Iterator<EdgeData> iter = G.edgeIter();
+//        while(iter.hasNext())
+//        {
+//            EdgeData ed = iter.next();
+//            int src = ed.getSrc();
+//            int dst = ed.getDest();
+//            double w = ed.getWeight();
+//            System.out.println(src + "---(" + w + ")--> " + dst);
+//        }
+//
+//        //System.out.println(src + "---(" + w + ")--> " + dst);
 
 
 
