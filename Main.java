@@ -1,6 +1,9 @@
 package api;
 
+import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
@@ -112,9 +115,11 @@ public class Main {
         isConnectedGraph = algorithms.isConnected();
         System.out.println("connected?  " + isConnectedGraph);
 
+        Queue<DirectedWeightedGraph> h= new PriorityQueue<>();
 
         //------------------------------------------
-
+        Hashtable<Integer, Double> ht1 = new Hashtable<>();
+        ht1.
 
     }
 }

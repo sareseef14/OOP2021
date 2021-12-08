@@ -12,7 +12,7 @@ public class Node implements NodeData{
 
     public Node(int key) {
         this._key = key;
-       this._location = null; //new Geo_Location(0.0,0.0,0.0);
+        this._location = null; //new Geo_Location(0.0,0.0,0.0);
         this._weight = 0;
         this._info = "";
         this._tag = 0;
@@ -34,8 +34,14 @@ public class Node implements NodeData{
 
     @Override
     public void setLocation(GeoLocation p) {
+        if(p != null){
+            this._location=new Geo_Location(p.x(),p.y(), p.z());
+        }
+        else
+        {
+            this._location = null;
+        }
 
-       this._location=new Geo_Location(p.x(),p.y(), p.z());
     }
 
 
