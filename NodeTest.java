@@ -33,7 +33,7 @@ class NodeTest {
      @Test
     void getLocation()
     {
-///here just check if problem..
+
         n0.setLocation(g1);
         assertFalse(n0.getLocation()==g2);
         n1.setLocation(g2);
