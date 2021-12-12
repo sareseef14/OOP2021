@@ -1,4 +1,5 @@
 package api;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -91,10 +92,10 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
         int blackCounter = 0;
         if(_g.nodeSize() == 0) {return false;} // or true?
 
+        // work with 'clean' graph.
         DirectedWeightedGraph copyG = cleanColors(copy());
 
         Iterator<NodeData> iterN = copyG.nodeIter() ;
-
         while (iterN.hasNext())
         {
             NodeData startNode = iterN.next();
@@ -126,14 +127,16 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
         return true;
     }
 
+    // according to dijextra algorithm.
     @Override
     public double shortestPathDist(int src, int dest)
     {
         HashMap<Integer, Double> dist = new HashMap<Integer, Double>();
-        HashMap<Integer, Integer> prnt = new HashMap<Integer, Integer>();
+        //HashMap<Integer, Integer> prnt = new HashMap<Integer, Integer>();
         PriorityQueue<Integer> Q = new PriorityQueue<Integer>((a, b) -> (int)(dist.get(a) - dist.get(b)));
         PriorityQueue<Integer> Q2 = new PriorityQueue<Integer>((a, b) -> (int)(dist.get(a) - dist.get(b)));
 
+        // init HashMaps and Queue.
         Iterator<NodeData> itrN = _g.nodeIter();
         while(itrN.hasNext())
         {
@@ -146,7 +149,7 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
             {
                 dist.put(n.getKey(), Double.MAX_VALUE);
             }
-            prnt.put(n.getKey(), -1);
+            //prnt.put(n.getKey(), -1);
             Q.add(n.getKey());
         }
 
@@ -161,10 +164,11 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
                 EdgeData u_v = itrE.next();
                 int v = u_v.getDest();
 
+                // relax.
                 if(dist.get(v) > dist.get(u) + u_v.getWeight())
                 {
                     dist.replace(v, dist.get(u) + u_v.getWeight());
-                    prnt.replace(v, u);
+                    //prnt.replace(v, u);
 
                     // exactly like decrease key
                     while(!Q.isEmpty())
@@ -178,20 +182,23 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
                 }
             }
 
+            // if we found the dest we don't need to continue...
             if(u == dest){break;}
         }
 
         return dist.get(dest) == Double.MAX_VALUE ? -1 : dist.get(dest);
     }
 
+    // according to dijextra algorithm.
     @Override
     public List<NodeData> shortestPath(int src, int dest)
     {
         HashMap<Integer, Double> dist = new HashMap<Integer, Double>();
         HashMap<Integer, Integer> prnt = new HashMap<Integer, Integer>();
         PriorityQueue<Integer> Q = new PriorityQueue<Integer>((a, b) -> (int)(dist.get(a) - dist.get(b)));
-        PriorityQueue<Integer> Q2 = new PriorityQueue<Integer>((a, b) -> (int)(dist.get(a) - dist.get(b))); //
+        PriorityQueue<Integer> Q2 = new PriorityQueue<Integer>((a, b) -> (int)(dist.get(a) - dist.get(b)));
 
+        // init HashMaps and Queue.
         Iterator<NodeData> itrN = _g.nodeIter();
         while(itrN.hasNext())
         {
@@ -218,6 +225,7 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
                 EdgeData u_v = itrE.next();
                 int v = u_v.getDest();
 
+                // relax.
                 if(dist.get(v) > dist.get(u) + u_v.getWeight())
                 {
                     dist.replace(v, dist.get(u) + u_v.getWeight());
@@ -234,7 +242,9 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
                     }
                 }
             }
-            if(u == dest){break;} // when we finish with our dest.
+
+            // if we found the dest we don't need to continue...
+            if(u == dest){break;}
         }
 
         // if no path
@@ -243,6 +253,7 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
             return null;
         }
 
+        // build the path from src --> .. --> dst. by reverse.
         List<NodeData> path = new LinkedList<NodeData>();
         int curr = dest;
         path.add(0, _g.getNode(curr));
@@ -265,17 +276,22 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
         }
 
         HashMap<Integer, Double> shortestPathSum = new HashMap<Integer, Double>();
+
+        // init table of sums of all shortest paths.
         Iterator<NodeData> it = _g.nodeIter();
         while(it.hasNext())
         {
             NodeData curr = it.next();
-            shortestPathSum.put(curr.getKey(), Double.MAX_VALUE);
+            shortestPathSum.put(curr.getKey(), 0.0);//Double.MAX_VALUE);
         }
 
+        // take some node to be first center.
+        // if another node is lower by sum
+        // they will swap.
         it = _g.nodeIter();
         int returnCenter = it.next().getKey();
-        System.out.println("\nCurrCenter: " + returnCenter);
 
+        // from all src to all dst.
         Iterator<NodeData> itSrc = _g.nodeIter();
         while(itSrc.hasNext())
         {
@@ -285,26 +301,26 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
                 while (itDst.hasNext())
                 {
                     int dst = itDst.next().getKey();
+
+                    // find length of path between src-->dst.
                     double pathLenSrcToDst = shortestPathDist(src, dst);
-                    if(shortestPathSum.get(src) == Double.MAX_VALUE)
+
+                    // update table.
+                    if( src != dst && shortestPathSum.get(src) < pathLenSrcToDst)
                     {
                         shortestPathSum.replace(src, pathLenSrcToDst);
                     }
-                    else
-                    {
-                        shortestPathSum.replace(src, shortestPathSum.get(src) + pathLenSrcToDst);
-                    }
                 }
             }
+
+            // check if the potential center still relevant.
             if (shortestPathSum.get(returnCenter) > shortestPathSum.get(src))
             {
-                System.out.println("\nCurrCenter: " + src);
                 returnCenter = src;
             }
 
         }
 
-        System.out.println("\n"+ shortestPathSum.toString());
         return _g.getNode(returnCenter);
     }
 
@@ -313,6 +329,8 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
     {
         HashSet<Integer> notVisited = new HashSet<Integer>();
         List<NodeData> pathAroundAllCities = new LinkedList<NodeData>();
+
+        // init pull of all cities we need to go in the path.
         Iterator<NodeData> itCities = cities.iterator();
         while(itCities.hasNext())
         {
@@ -329,13 +347,19 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
 
         while(!notVisited.isEmpty())
         {
+            // take the end of the path
             int src = pathAroundAllCities.get(pathAroundAllCities.size()-1).getKey();
+
+            // and check the path between it to some city that don't visited.
             Iterator<Integer> itNotVisit = notVisited.iterator();
             int dst = itNotVisit.next();
             List<NodeData> srcToDstPath = shortestPath(src, dst);
 
+            // get path to connect the entry path
             Iterator<NodeData> itSrcToDstPath = srcToDstPath.iterator();
             itSrcToDstPath.next(); // avoid from first element because it exits at and of pathAroundAllCitiesList!
+
+            // connect the path to the entry path.
             while (itSrcToDstPath.hasNext())
             {
                 NodeData n = itSrcToDstPath.next();
@@ -415,33 +439,12 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
             }
         };
 
-//        // list for nodes
-//        Iterator<NodeData> itN = _g.nodeIter();
-//        ArrayList<NodeData> arrN = new ArrayList<NodeData>();
-//        while(itN.hasNext())
-//        {
-//            arrN.add(itN.next());
-//        }
 
-//        Gson gson = new GsonBuilder().registerTypeAdapter(Node.class, serializerNodes).create();
-//        String jsonNodesStr = gson.toJson(arrN);
-//        System.out.println(jsonNodesStr);
-
-//        // list for edges
-//        Iterator<EdgeData> itE = _g.edgeIter();
-//        ArrayList<EdgeData> arrE = new ArrayList<EdgeData>();
-//        while(itE.hasNext())
-//        {
-//            arrE.add(itE.next());
-//        }
-
-//        gson = new GsonBuilder().registerTypeAdapter(Edge.class, serializerEdges).create();
-//        String jsonEdgesStr = gson.toJson(arrE);
-//        System.out.println(jsonEdgesStr);
-
+        // get the json string represent graph
         Gson gson = new GsonBuilder().registerTypeAdapter(Graph.class, serializerGraph).setPrettyPrinting().create();
         String jsonGraphStr = gson.toJson(this._g);
 
+        // save the string into file
         try
         {
             FileWriter fw = new FileWriter(file);
@@ -512,17 +515,21 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
             }
         };
 
+        // take the json string from file.
         String content = "";
         try
         {
             content = Files.readString(Path.of(file));
-            //System.out.println(content);
         }
         catch (IOException e){return false;}
 
+        // create the Graph object by json string.
         Gson gson = new GsonBuilder().registerTypeAdapter(Graph.class, deserializerGraph).setPrettyPrinting().create();
         DirectedWeightedGraph newGraph = gson.fromJson(content, Graph.class);
+
+        // update the current graph.
         this.init(newGraph);
+
         return true;
     }
 
@@ -541,7 +548,3 @@ public class GraphAlgo implements DirectedWeightedGraphAlgorithms {
     }
 
 }
-
-
-
-
