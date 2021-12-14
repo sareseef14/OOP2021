@@ -103,7 +103,7 @@ In the project we implemented the interfaces, There are five classes which we wi
 	 
 	 
 	 
-**The Third Class is Called "EdgeData" :
+**The Third Class is Called "Edge" :
  This class represents the Edge thet Preseneted By Tow  Vertex (source ,destenation, Weight) in a (directional) weighted graph , by implementing the interface in the code "EdgeData".**
 
 	/**
