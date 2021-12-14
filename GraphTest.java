@@ -251,10 +251,4 @@ class GraphTest
 
     }
 
-    @Test
-    void getMC()
-    {
-
-
-    }
 }
