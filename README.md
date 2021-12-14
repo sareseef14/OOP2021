@@ -31,7 +31,7 @@ In the project we implemented the interfaces, There are five classes which we wi
           public void setLocation(GeoLocation p); 
 	/**
 	 *Allows changing this node's location.
-	 * @param p - new new location  (position) of this node.
+	 * @param p -new location  (position) of this node.
 	 */
 
           public double getWeight();
@@ -98,10 +98,56 @@ In the project we implemented the interfaces, There are five classes which we wi
     
     public double distance(GeoLocation g);
     /** 
-    *THe Distance of to Pionts 3D.
+    *The Distance of to Pionts 3D.
 	 
 	 
 	 
 	 
+**The Third Class is Called "EdgeData" :
+ This class represents the Edge thet preentd by tow  Vertex (source ,destenation, Weight) in a (directional) weighted graph , by implementing the interface in the code "EdgeData".**
+
+	/**
+	 * The id of the source node of this edge.
+	 * @return
+	 */
+	
+	public int getSrc();
+	/**
+	 * The id of the destination node of this edge
+	 * @return
+	 */
+	
+	public int getDest();
+	/**
+	 * @return the weight of this edge (positive value).
+	 */
+	
+	public double getWeight();
+	/**
+	 * Returns the remark (meta data) associated with this edge.
+	 * @return
+	 */
+	
+	public String getInfo();
+	/**
+	 * Allows changing the remark (meta data) associated with this edge.
+	 * @param s
+	 */
+	
+	public void setInfo(String s);
+	/**
+	 * Temporal data (aka color: e,g, white, gray, black) 
+	 * which can be used be algorithms 
+	 * @return
+	 */
+	
+	public int getTag();
+	/** 
+	 * This method allows setting the "tag" value for temporal marking an edge - common
+	 * practice for marking by algorithms.
+	 * @param t - the new value of the tag
+	 */
+	public void setTag(int t);
+
 	 
 	 
