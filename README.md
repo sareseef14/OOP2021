@@ -1,6 +1,6 @@
 # OOP2021-EX2
 
-Ex2.readme introuduction @Auther Sari Safe& Semcha Teich 
+Ex2.readme introuduction @Auther Sari Safe& Simcha Teich 
 
 In the project we implemented the interfaces, There are five classes which we will use in order to implement for each interface. 
    (We will to represent  the  classes by its sectiones).
