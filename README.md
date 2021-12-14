@@ -150,20 +150,20 @@ In the project we implemented the interfaces, There are five classes which we wi
 	public void setTag(int t);
 	
 	
-**The Fourth  Class is Called "Edge" :
- This class represents the Graph  weighted graph , by implementing the interface in the code "DirectedWeightedGraph".**
+**The Fourth  Class is Called "Graph" :
+ This class represents the  Directedweighted graph , by implementing the interface in the code "DirectedWeightedGraph".**
  
  
  
- public NodeData getNode(int key);
-/**
+   public NodeData getNode(int key);
+       /**
 	 * returns the node_data by the node_id,
 	 * @param key - the node_id
 	 * @return the node_data by the node_id, null if none.
 	 */
 
-	public EdgeData getEdge(int src, int dest);
-/**
+      public EdgeData getEdge(int src, int dest);
+      /**
 	 * returns the data of the edge (src,dest), null if none.
 	 * Note: this method should run in O(1) time.
 	 * @param src
@@ -171,35 +171,36 @@ In the project we implemented the interfaces, There are five classes which we wi
 	 * @return
 	 */
 
-	public void addNode(NodeData n);
-/**
+  public void addNode(NodeData n);
+       /**
 	 * adds a new node to the graph with the given node_data.
 	 * Note: this method should run in O(1) time.
 	 * @param n
 	 */
+   
    public void connect(int src, int dest, double w);
-  /**
-     * Connects an edge with weight w between node src to node dest.
-     * * Note: this method should run in O(1) time.
-     * @param src - the source of the edge.
-     * @param dest - the destination of the edge.
-     * @param w - positive weight representing the cost (aka time, price, etc) between src-->dest.
-   */
+   /**
+     ** Connects an edge with weight w between node src to node dest.
+     ** Note: this method should run in O(1) time.
+     ** @param src - the source of the edge.
+     ** @param dest - the destination of the edge.
+     ** @param w - positive weight representing the cost (aka time, price, etc) between src-->dest.
+     */
  
  	public Iterator<NodeData> nodeIter();
- /**
+      /**
 	 * This method returns an Iterator for the
 	 * collection representing all the nodes in the graph.
 	 * Note: if the graph was changed since the iterator was constructed - a RuntimeException should be thrown.
 	 * @return Iterator<node_data>
-	 */
+         */
 	
 	public Iterator<EdgeData> edgeIter();
-/**
-	 * This method returns an Iterator for all the edges in this graph.
-	 * Note: if any of the edges going out of this node were changed since the iterator was constructed - a RuntimeException           should be thrown.
-	 * @return Iterator<EdgeData>
-	 */
+     /**
+	* This method returns an Iterator for all the edges in this graph.
+	* Note: if any of the edges going out of this node were changed since the iterator was constructed - a RuntimeException           * should be thrown.
+	* @return Iterator<EdgeData>
+        */
 	
 
 
