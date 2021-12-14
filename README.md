@@ -17,14 +17,14 @@ In the project we implemented the interfaces, There are five classes which we wi
 
 
        public int getKey();
-       /**
+          /**
 	 * Returns the key (id) associated with this node.
 	 * @return
 	 */
 
         public GeoLocation getLocation();
          
-	/**
+	   /**
 	 *Returns the location of this node, if none return null.
 	 * @return
 	 */
