@@ -297,4 +297,13 @@ In the project we implemented the interfaces, There are five classes which we wi
 
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	![uml](https://user-images.githubusercontent.com/95385314/146082476-86a30fb1-7972-4d41-9ce9-1248dce177e3.jpeg)
 	 
