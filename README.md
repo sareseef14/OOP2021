@@ -162,7 +162,7 @@ In the project we implemented the interfaces, There are five classes which we wi
 	 * @return the node_data by the node_id, null if none.
 	 */
 
-     public EdgeData getEdge(int src, int dest);
+       public EdgeData getEdge(int src, int dest);
       /**
 	 * returns the data of the edge (src,dest), null if none.
 	 * Note: this method should run in O(1) time.
@@ -171,7 +171,7 @@ In the project we implemented the interfaces, There are five classes which we wi
 	 * @return
 	 */
 
-      public void addNode(NodeData n);
+        public void addNode(NodeData n);
        /**
 	 * adds a new node to the graph with the given node_data.
 	 * Note: this method should run in O(1) time.
@@ -204,7 +204,7 @@ In the project we implemented the interfaces, There are five classes which we wi
         */
 	
 **The Five  Class is Called "DirectedWeightedGraphAlgorithms" :This class represents the  Directedweighted graph , by implementing the interface in the code "DirectedWeightedGraphAlgorithms".**
-**
+
  * This interface represents a Directed (positive) Weighted Graph Theory Algorithms including:
  * 0. clone(); (copy)
  * 1. init(graph);
@@ -217,7 +217,7 @@ In the project we implemented the interfaces, There are five classes which we wi
  * 8. load(file); // JSON file
  *
  */
-public interface DirectedWeightedGraphAlgorithms {
+     public interface DirectedWeightedGraphAlgorithms {
     /**
      * Inits the graph on which this set of algorithms operates on.
      * @param g
@@ -275,8 +275,7 @@ public interface DirectedWeightedGraphAlgorithms {
      * @param file - the file name (may include a relative path).
      * @return true - iff the file was successfully saved
      */
-    public boolean save(String file);
-
+     public boolean save(String file);
     /**
      * This method loads a graph to this graph algorithm.
      * if the file was successfully loaded - the underlying graph
