@@ -17,50 +17,50 @@ In the project we implemented the interfaces, There are five classes which we wi
 
 
        public int getKey();
-          /**
+       /**
 	 * Returns the key (id) associated with this node.
 	 * @return
 	 */
 
         public GeoLocation getLocation();
-         
-	   /**
+       /**
 	 *Returns the location of this node, if none return null.
 	 * @return
 	 */
 	
           public void setLocation(GeoLocation p); 
-	 	/** Allows changing this node's location.
+	 /**
+	 *Allows changing this node's location.
 	 * @param p - new new location  (position) of this node.
 	 */
 
           public double getWeight();
-		/**
+	/**
 	 * Returns the weight associated with this node.
 	 * @return
 	 */
 	
          public void setWeight(double w);
-	   /**
+	/**
 	 * Allows changing this node's weight.
 	 * @param w - the new weight
 	 */
 	
           public String getInfo();
-		/**
+	/**
 	 * Returns the remark (meta data) associated with this node.
 	 * @return
 	 */
 	
          public void setInfo(String s);	
-		/**
+	/**
 	 * Allows changing the remark (meta data) associated with this node.
 	 * @param s
 	 */
 
 
          public int getTag();
-	   /**
+	/**
 	 * Temporal data (aka color: e,g, white, gray, black) 
 	 * which can be used be algorithms 
 	 * @return
@@ -68,7 +68,7 @@ In the project we implemented the interfaces, There are five classes which we wi
 	 
 	
          public void setTag(int t);
-		/** 
+	/** 
 	 * Allows setting the "tag" value for temporal marking an node - common
 	 * practice for marking by algorithms.
 	 * @param t - the new value of the tag
