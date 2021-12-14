@@ -76,22 +76,22 @@ In the project we implemented the interfaces, There are five classes which we wi
 	 
 	 
 	 
-	 
-**Geo_Location class functions:**
-
 **The Seconed Class is Called "Geo_Location" :
  This class representsrepresents a geo location <x,y,z> , by implementing the interface in the code "GeoLocation".**
-
+**Geo_Location class functions:**
  *In this class that performs the following steps:*	 
  
  
-  public double x();
-  /**
-  *Location of the x  in graph 3D.
+  
+  
+    public double x();
+    /**
+    *Location of the x  in graph 3D.
   
     public double y();
     /**
     *Location of the y  in graph 3D.
+   
     public double z();
     /**
     *Location of the z  in graph 3D.
