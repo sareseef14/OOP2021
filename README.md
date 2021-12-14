@@ -1,4 +1,4 @@
-# OOP2021-EX3
+# OOP2021-EX2
 
 Ex2.readme introuduction @Auther Sari Safe& Semcha Teich 
 
