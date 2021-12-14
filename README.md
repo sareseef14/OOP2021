@@ -16,13 +16,13 @@ In the project we implemented the interfaces, There are five classes which we wi
  *In this class that performs the following steps:*
 
 
-   public int getKey();
-/**
+       public int getKey();
+       /**
 	 * Returns the key (id) associated with this node.
 	 * @return
 	 */
 
-      public GeoLocation getLocation();
+        public GeoLocation getLocation();
          
 	/**
 	 *Returns the location of this node, if none return null.
@@ -41,7 +41,7 @@ In the project we implemented the interfaces, There are five classes which we wi
 	 */
 	
          public void setWeight(double w);
-	/**
+	   /**
 	 * Allows changing this node's weight.
 	 * @param w - the new weight
 	 */
@@ -60,7 +60,7 @@ In the project we implemented the interfaces, There are five classes which we wi
 
 
          public int getTag();
-	/**
+	   /**
 	 * Temporal data (aka color: e,g, white, gray, black) 
 	 * which can be used be algorithms 
 	 * @return
